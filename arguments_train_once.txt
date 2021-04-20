@@ -1,0 +1,42 @@
+--mode train
+--model_name bts_v2_pytorch_test
+--encoder densenet161_bts
+--kitti_data_path /home/yrx/data/kitti/kitti_raw_data/
+--kitti_gt_path /home/yrx/data/kitti/data_depth_annotated/train/
+--nyu_data_path /home/yrx/data/nyu/sync/
+--nyu_gt_path /home/yrx/data/nyu/sync/
+--kitti_filenames_file ../train_test_inputs/eigen_train_files_with_gt.txt
+--nyu_filenames_file ../train_test_inputs/nyudepthv2_train_files_with_gt.txt
+--batch_size 4
+--num_epochs 50
+--learning_rate 1e-4
+--weight_decay 1e-2
+--adam_eps 1e-3
+--num_threads 1
+--kitti_input_height 352
+--kitti_input_width 704
+--nyu_input_height 416
+--nyu_input_width 544
+--kitti_max_depth 80
+--nyu_max_depth 10
+--do_kb_crop
+--do_random_rotate
+--degree 1.0
+--log_directory ./models
+--kitti_log_directory ./models/kitti
+--nyu_log_directory ./models/nyu
+--multiprocessing_distributed
+--dist_url tcp://127.0.0.1:2345
+
+--log_freq 100
+--do_online_eval
+--eval_freq 500
+--kitti_data_path_eval /home/yrx/data/kitti/kitti_raw_data/
+--kitti_gt_path_eval /home/yrx/data/kitti/data_depth_annotated/val/
+--nyu_data_path_eval /home/yrx/data/nyu/official_splits/test/
+--nyu_gt_path_eval /home/yrx/data/nyu/official_splits/test/
+--kitti_filenames_file_eval ../train_test_inputs/eigen_test_files_with_gt.txt
+--nyu_filenames_file_eval ../train_test_inputs/nyudepthv2_test_files_with_gt.txt
+--min_depth_eval 1e-3
+--eval_summary_directory ./models/eval/
+--garg_crop
